@@ -2,9 +2,9 @@
   "name": "prueba_node",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon ."
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
