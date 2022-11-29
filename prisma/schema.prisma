@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model departamento {
+  codigo      Int        @id(map: "pk_cod_departamento") @default(autoincrement())
+  nombre      String?    @db.VarChar(100)
+  presupuesto Float?
+  empleado    empleado[]
+}
+
+model empleado {
+  codigo              Int           @id(map: "pk_cod_empleado") @default(autoincrement())
+  nit                 String?       @db.VarChar(9)
+  nombre              String?       @db.VarChar(100)
+  apellido1           String?       @db.VarChar(100)
+  apellido2           String?       @db.VarChar(100)
+  codigo_departamento Int?
+  departamento        departamento? @relation(fields: [codigo_departamento], references: [codigo], onDelete: NoAction, onUpdate: NoAction, map: "fk_cod_departamento")
+}
